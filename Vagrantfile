@@ -3,9 +3,9 @@ apt-get update
 apt-get install git docker docker-compose -y
 systemctl enable docker && systemctl start docker
 chown -R vagrant:vagrant /media
-git clone https://github.com/sebgl/htpc-download-box.git
-chown -R vagrant:vagrant htpc-download-box
-cd htpc-download-box
+git clone https://github.com/michielcox/good-bot.git
+chown -R vagrant:vagrant good-bot
+cd good-bot
 docker-compose up -d
 SCRIPT
 
