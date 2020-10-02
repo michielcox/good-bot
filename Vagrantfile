@@ -19,7 +19,7 @@ Vagrant.configure("2") do |config|
   end
   config.vm.box = "ubuntu/bionic64"
   config.vm.hostname = "good-bot"
-  config.vm.synced_folder "/Volumes/vagrant", "/media"
+  config.vm.synced_folder "/Volumes/vagrant/", "/media/"
   config.vm.provision "shell", inline: $script
   config.vm.network "public_network", ip: "192.168.1.66", bridge: "en0: Ethernet"
   config.vm.provision "shell", # default router

@@ -8,7 +8,7 @@ services:
     restart: unless-stopped
     volumes:
       - /dev/net:/dev/net:z # tun device
-      - ${ROOT}/config/vpn:/vpn # OpenVPN configuration
+      - ${ROOT}/config/vpn:/config # OpenVPN configuration
     security_opt:
       - label:disable
     ports:
