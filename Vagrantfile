@@ -6,6 +6,7 @@ chown -R vagrant:vagrant /media
 git clone https://github.com/michielcox/good-bot.git
 chown -R vagrant:vagrant good-bot
 cd good-bot
+cp .env.example .env
 docker-compose up -d
 SCRIPT
 

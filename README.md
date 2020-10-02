@@ -230,9 +230,9 @@ services:
     restart: always
     network_mode: service:vpn # run on the vpn network
     environment:
-      - PUID=${PUID} # default user id, defined in .env
-      - PGID=${PGID} # default group id, defined in .env
-      - TZ=${TZ} # timezone, defined in .env
+      - PUID=${PUID} # default user id, defined in .env.example
+      - PGID=${PGID} # default group id, defined in .env.example
+      - TZ=${TZ} # timezone, defined in .env.example
     volumes:
       - ${ROOT}/downloads:/downloads # downloads folder
       - ${ROOT}/config/deluge:/config # config files
@@ -371,9 +371,9 @@ deluge:
   restart: always
   network_mode: service:vpn # run on the vpn network
   environment:
-    - PUID=${PUID} # default user id, defined in .env
-    - PGID=${PGID} # default group id, defined in .env
-    - TZ=${TZ} # timezone, defined in .env
+    - PUID=${PUID} # default user id, defined in .env.example
+    - PGID=${PGID} # default group id, defined in .env.example
+    - TZ=${TZ} # timezone, defined in .env.example
   volumes:
     - ${ROOT}/downloads:/downloads # downloads folder
     - ${ROOT}/config/deluge:/config # config files
@@ -401,9 +401,9 @@ jackett:
   restart: unless-stopped
   network_mode: host
   environment:
-    - PUID=${PUID} # default user id, defined in .env
-    - PGID=${PGID} # default group id, defined in .env
-    - TZ=${TZ} # timezone, defined in .env
+    - PUID=${PUID} # default user id, defined in .env.example
+    - PGID=${PGID} # default group id, defined in .env.example
+    - TZ=${TZ} # timezone, defined in .env.example
   volumes:
     - /etc/localtime:/etc/localtime:ro
     - ${ROOT}/downloads/torrent-blackhole:/downloads # place where to put .torrent files for manual download
@@ -442,9 +442,9 @@ Once again we'll use the Docker image from linuxserver and set it in a docker-co
     restart: unless-stopped
     network_mode: host
     environment:
-      - PUID=${PUID} # default user id, defined in .env
-      - PGID=${PGID} # default group id, defined in .env
-      - TZ=${TZ} # timezone, defined in .env
+      - PUID=${PUID} # default user id, defined in .env.example
+      - PGID=${PGID} # default group id, defined in .env.example
+      - TZ=${TZ} # timezone, defined in .env.example
      volumes:
       - ${ROOT}/downloads:/downloads # download folder
       - ${ROOT}/config/nzbget:/config # config files
@@ -480,7 +480,7 @@ plex-server:
   image: plexinc/pms-docker:latest
   restart: unless-stopped
   environment:
-    - TZ=${TZ} # timezone, defined in .env
+    - TZ=${TZ} # timezone, defined in .env.example
   network_mode: host
   volumes:
     - ${ROOT}/config/plex/db:/config # plex database
@@ -547,9 +547,9 @@ Let's go:
     restart: unless-stopped
     network_mode: host
     environment:
-      - PUID=${PUID} # default user id, defined in .env
-      - PGID=${PGID} # default group id, defined in .env
-      - TZ=${TZ} # timezone, defined in .env
+      - PUID=${PUID} # default user id, defined in .env.example
+      - PGID=${PGID} # default group id, defined in .env.example
+      - TZ=${TZ} # timezone, defined in .env.example
      volumes:
       - /etc/localtime:/etc/localtime:ro
       - ${ROOT}/config/sonarr:/config # config files
@@ -637,9 +637,9 @@ Radarr is _very_ similar to Sonarr. You won't be surprised by this configuration
     restart: unless-stopped
     network_mode: host
     environment:
-      - PUID=${PUID} # default user id, defined in .env
-      - PGID=${PGID} # default group id, defined in .env
-      - TZ=${TZ} # timezone, defined in .env
+      - PUID=${PUID} # default user id, defined in .env.example
+      - PGID=${PGID} # default group id, defined in .env.example
+      - TZ=${TZ} # timezone, defined in .env.example
      volumes:
       - /etc/localtime:/etc/localtime:ro
       - ${ROOT}/config/radarr:/config # config files
@@ -730,9 +730,9 @@ bazarr:
   restart: unless-stopped
   network_mode: host
   environment:
-    - PUID=${PUID} # default user id, defined in .env
-    - PGID=${PGID} # default group id, defined in .env
-    - TZ=${TV} # timezone, defined in .env
+    - PUID=${PUID} # default user id, defined in .env.example
+    - PGID=${PGID} # default group id, defined in .env.example
+    - TZ=${TV} # timezone, defined in .env.example
     - UMASK_SET=022 #optional
   volumes:
     - ${ROOT}/config/bazarr:/config # config files
