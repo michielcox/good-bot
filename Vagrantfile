@@ -12,10 +12,10 @@ SCRIPT
 
 Vagrant.configure("2") do |config|
   config.vm.provider "virtualbox" do |v|
-    v.memory = 3072
+    v.memory = 2048
     v.cpus = 2
     v.name = "Good Bot"
-    v.customize ["modifyvm", :id, "--vram", "256"]
+    v.customize ["modifyvm", :id, "--vram", "128"]
   end
   config.vm.box = "ubuntu/bionic64"
   config.vm.hostname = "good-bot"
