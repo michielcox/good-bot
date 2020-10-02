@@ -11,7 +11,7 @@ SCRIPT
 
 Vagrant.configure("2") do |config|
   config.vm.box = "ubuntu/bionic64"
-
+  config.vm.provision "shell", inline: $script
   config.vm.network "public_network", ip: "192.168.1.66", bridge: "en0: Ethernet"
   config.vm.provision "shell", # default router
     run: "always",
@@ -29,6 +29,5 @@ Vagrant.configure("2") do |config|
   config.vm.network "forwarded_port", guest: 7878, host: 7878   #Radarr
   config.vm.network "forwarded_port", guest: 6767, host: 6767   #Bazarr
 
-  config.vm.provision "shell", inline: $script
 
 end
