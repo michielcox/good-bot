@@ -27,6 +27,8 @@ services:
     volumes:
       - ${ROOT}/downloads:/downloads # downloads folder
       - ${ROOT}/config/deluge:/config # config files
+    ports:
+      - 8112:8112
 
   jackett:
     container_name: jackett
@@ -41,6 +43,8 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - ${ROOT}/downloads/torrent-blackhole:/downloads # place where to put .torrent files for manual download
       - ${ROOT}/config/jackett:/config # config files
+    ports:
+      - 9117:9117
 
   nzbget:
     container_name: nzbget
@@ -54,6 +58,8 @@ services:
     volumes:
       - ${ROOT}/downloads:/downloads # download folder
       - ${ROOT}/config/nzbget:/config # config files
+    ports:
+      - 6789:6789
 
   sonarr:
     container_name: sonarr
@@ -69,6 +75,8 @@ services:
       - ${ROOT}/config/sonarr:/config # config files
       - ${ROOT}/complete/tv:/tv # tv shows folder
       - ${ROOT}/downloads:/downloads # download folder
+    ports:
+      - 8989:8989
 
   radarr:
     container_name: radarr
@@ -84,6 +92,8 @@ services:
       - ${ROOT}/config/radarr:/config # config files
       - ${ROOT}/complete/movies:/movies # movies folder
       - ${ROOT}/downloads:/downloads # download folder
+    ports:
+      - 7878:7878
 
   plex-server:
     container_name: plex-server
@@ -96,6 +106,8 @@ services:
       - ${ROOT}/config/plex/db:/config # plex database
       - ${ROOT}/config/plex/transcode:/transcode # temp transcoded files
       - ${ROOT}/complete:/data # media library
+    ports:
+      - 32400:32400
 
   bazarr:
     container_name: bazarr
