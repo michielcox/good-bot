@@ -11,7 +11,15 @@ docker-compose up -d
 SCRIPT
 
 Vagrant.configure("2") do |config|
+  config.vm.provider "virtualbox" do |v|
+    v.memory = 3072
+    v.cpus = 2
+    v.name = "Good Bot"
+    v.customize ["modifyvm", :id, "--vram", "256"]
+  end
   config.vm.box = "ubuntu/bionic64"
+  config.vm.hostname = "good-bot"
+  config.vm.synced_folder "/Volumes/vagrant", "/media"
   config.vm.provision "shell", inline: $script
   config.vm.network "public_network", ip: "192.168.1.66", bridge: "en0: Ethernet"
   config.vm.provision "shell", # default router
@@ -21,7 +29,6 @@ Vagrant.configure("2") do |config|
     run: "always",
     inline: "eval `route -n | awk '{ if ($8 ==\"eth0\" && $2 != \"0.0.0.0\") print \"route del default gw \" $2; }'`"
 
-  config.vm.synced_folder "/Volumes/vagrant", "/media", :mount_options => ["dmode=777", "fmode=666"]
   config.vm.network "forwarded_port", guest: 8112, host: 8112   #Deluge
   config.vm.network "forwarded_port", guest: 9117, host: 9117   #Jackett
   config.vm.network "forwarded_port", guest: 6789, host: 6789   #nzbget
